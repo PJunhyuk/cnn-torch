@@ -9,7 +9,7 @@ testset = torch.load('cifar10-test.t7')
 classes = {'airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck'}
 print('Initialize completed')
 
---print(trainset)
+-- print(trainset)
 --[[
 {
     data : ByteTensor - size: 10000x3x32x32
@@ -17,7 +17,7 @@ print('Initialize completed')
 }
 ]]
 
---print(#trainset.data)
+-- print(#trainset.data)
 --[[
 10000
 3
@@ -41,7 +41,7 @@ function trainset:size()
     return self.data:size(1)
 end
 
---print(trainset:size())
+-- print(trainset:size())
 -- 10000
 
 -- Normalization of trainset.data
@@ -49,14 +49,14 @@ mean = {}
 stdv  = {}
 for i=1,3 do
     mean[i] = trainset.data[{ {}, {i}, {}, {}  }]:mean()
-    print('Channel ' .. i .. ', Mean: ' .. mean[i])
+    -- print('Channel ' .. i .. ', Mean: ' .. mean[i])
     trainset.data[{ {}, {i}, {}, {}  }]:add(-mean[i])
     
     stdv[i] = trainset.data[{ {}, {i}, {}, {}  }]:std()
-    print('Channel ' .. i .. ', Standard Deviation: ' .. stdv[i])
+    -- print('Channel ' .. i .. ', Standard Deviation: ' .. stdv[i])
     trainset.data[{ {}, {i}, {}, {}  }]:div(stdv[i])
 end
-print('data normalization completed')
+print('Data normalization completed')
 
 --print(trainset.data[100])
 
@@ -73,4 +73,29 @@ net:add(nn.Linear(84, 10))
 net:add(nn.LogSoftMax())
 print('Neural Networks setting completed')
 
-print('Lenet5\n' .. net:__tostring());
+-- print(net:__tostring());
+--[[
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> (6) -> (7) -> (8) -> (9) -> output]
+  (1): nn.SpatialConvolution(3 -> 6, 5x5)
+  (2): nn.SpatialMaxPooling(2x2, 2,2)
+  (3): nn.SpatialConvolution(6 -> 16, 5x5)
+  (4): nn.SpatialMaxPooling(2x2, 2,2)
+  (5): nn.View(400)
+  (6): nn.Linear(400 -> 120)
+  (7): nn.Linear(120 -> 84)
+  (8): nn.Linear(84 -> 10)
+  (9): nn.LogSoftMax
+}
+]]
+
+-- Define cost function
+criterion = nn.ClassNLLCriterion()
+
+-- Train
+trainer = nn.StochasticGradient(net, criterion)
+trainer.learningRate = 0.001
+trainer.maxIteration = 5 -- set epoch
+
+trainer:train(trainset)
+print('Train completed')
