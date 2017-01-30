@@ -34,3 +34,19 @@ function trainset:size()
 end
 
 print(trainset:size())
+-- 10000
+
+-- Normalization of trainset.data
+mean = {}
+stdv  = {}
+for i=1,3 do
+    mean[i] = trainset.data[{ {}, {i}, {}, {}  }]:mean()
+    print('Channel ' .. i .. ', Mean: ' .. mean[i])
+    trainset.data[{ {}, {i}, {}, {}  }]:add(-mean[i])
+    
+    stdv[i] = trainset.data[{ {}, {i}, {}, {}  }]:std()
+    print('Channel ' .. i .. ', Standard Deviation: ' .. stdv[i])
+    trainset.data[{ {}, {i}, {}, {}  }]:div(stdv[i])
+end
+
+print(trainset.data[100])
