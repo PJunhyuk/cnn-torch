@@ -1,5 +1,8 @@
 -- how to run: th train.lua
 
+-- Setting required packages
+require 'nn';
+
 -- Download data from files, and initialize it
 trainset = torch.load('cifar10-train.t7')
 testset = torch.load('cifar10-test.t7')
