@@ -103,6 +103,9 @@ trainer.maxIteration = 5 -- set epoch
 trainer:train(trainset)
 print('Train completed')
 
+-- Check time
+print(string.format("elapsed time until train completed: %.2f\n", os.clock() - x))
+
 -- Normalize testset.data
 testset.data = testset.data:double()
 for i=1,3 do
@@ -111,12 +114,18 @@ for i=1,3 do
 end
 print('Testset data normalization completed')
 
-predicted = net:forward(testset.data[100])
-print('predicted:exp(): ' .. predicted:exp())
-
-for i=1,predicted:size(1) do
-    print(classes[i], predicted[i])
+-- Checking results
+correct = 0
+for i=1,10000 do
+    local groundtruth = testset.label[i]
+    local prediction = net:forward(testset.data[i])
+    local confidences, indices = torch.sort(prediction, true)
+    if groundtruth == indices[1] then
+        correct = correct + 1
+    end
 end
 
+print(correct, 100*correct/10000 .. ' % ')
+
 -- Check time
-print(string.format("elapsed time: %.2f\n", os.clock() - x))
+print(string.format("total elapsed time: %.2f\n", os.clock() - x))
