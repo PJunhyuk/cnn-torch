@@ -1,7 +1,7 @@
 -- how to run: th train.lua
 
 -- Check time
-local time = os.time()
+local time = os.clock()
 
 -- Setting required packages
 require 'nn';
