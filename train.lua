@@ -112,8 +112,11 @@ end
 print('Testset data normalization completed')
 
 predicted = net:forward(testset.data[100])
-print('predicted: ' .. predicted)
 print('predicted:exp(): ' .. predicted:exp())
+
+for i=1,predicted:size(1) do
+    print(classes[i], predicted[i])
+end
 
 -- Check time
 print(string.format("elapsed time: %.2f\n", os.clock() - x))
