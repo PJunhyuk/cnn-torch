@@ -44,16 +44,9 @@ end
 -- print(trainset:size())
 -- 10000
 
--- Normalization of trainset.data
-mean = {}
-stdv  = {}
+-- Normalize trainset.data
 for i=1,3 do
-    mean[i] = trainset.data[{ {}, {i}, {}, {}  }]:mean()
-    -- print('Channel ' .. i .. ', Mean: ' .. mean[i])
     trainset.data[{ {}, {i}, {}, {}  }]:add(-mean[i])
-    
-    stdv[i] = trainset.data[{ {}, {i}, {}, {}  }]:std()
-    -- print('Channel ' .. i .. ', Standard Deviation: ' .. stdv[i])
     trainset.data[{ {}, {i}, {}, {}  }]:div(stdv[i])
 end
 print('Data normalization completed')
@@ -99,3 +92,15 @@ trainer.maxIteration = 5 -- set epoch
 
 trainer:train(trainset)
 print('Train completed')
+
+-- Normalize testset.data
+testset.data = testset.data:double()
+for i=1,3 do
+    testset.data[{ {}, {i}, {}, {}  }]:add(-mean[i])  
+    testset.data[{ {}, {i}, {}, {}  }]:div(stdv[i])
+end
+print('Testset data normalization completed')
+
+predicted = net:forward(testset.data[100])
+print('predicted: ' .. predicted)
+print('predicted:exp(): ' .. predicted:exp())
