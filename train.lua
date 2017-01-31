@@ -1,5 +1,8 @@
 -- how to run: th train.lua
 
+-- Check time
+local time = os.time()
+
 -- Setting required packages
 require 'nn';
 
@@ -111,3 +114,6 @@ print('Testset data normalization completed')
 predicted = net:forward(testset.data[100])
 print('predicted: ' .. predicted)
 print('predicted:exp(): ' .. predicted:exp())
+
+-- Check time
+print(string.format("elapsed time: %.2f\n", os.clock() - x))
