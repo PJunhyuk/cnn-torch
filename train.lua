@@ -1,7 +1,7 @@
 -- how to run: th train.lua
 
 -- Check time
-local time = os.clock()
+local time = os.time()
 
 -- Setting required packages
 require 'nn';
@@ -127,4 +127,4 @@ end
 print('correct: ' ..  correct ..  '('  ..  100*correct/10000 .. '%)')
 
 -- Check time
-print(string.format("total elapsed time: %.2f", os.clock() - time))
+print(string.format("total elapsed time: %.2f", os.time() - time))
