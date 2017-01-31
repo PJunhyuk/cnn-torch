@@ -124,7 +124,7 @@ for i=1,10000 do
         correct = correct + 1
     end
 end
-print('correct: ', .. , correct, .. , '(' , .. , 100*correct/10000 .. '%)')
+print('correct: ' ..  correct ..  '('  ..  100*correct/10000 .. '%)')
 
 -- Check time
 print(string.format("total elapsed time: %.2f", os.clock() - time))
