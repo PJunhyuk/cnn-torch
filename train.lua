@@ -45,8 +45,15 @@ end
 -- 10000
 
 -- Normalize trainset.data
+mean = {}
+stdv  = {}
 for i=1,3 do
+    mean[i] = trainset.data[{ {}, {i}, {}, {}  }]:mean()
+    -- print('Channel ' .. i .. ', Mean: ' .. mean[i])
     trainset.data[{ {}, {i}, {}, {}  }]:add(-mean[i])
+    
+    stdv[i] = trainset.data[{ {}, {i}, {}, {}  }]:std()
+    -- print('Channel ' .. i .. ', Standard Deviation: ' .. stdv[i])
     trainset.data[{ {}, {i}, {}, {}  }]:div(stdv[i])
 end
 print('Data normalization completed')
