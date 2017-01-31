@@ -104,7 +104,7 @@ trainer:train(trainset)
 print('Train completed')
 
 -- Check time
-print(string.format("elapsed time until train completed: %.2f\n", os.clock() - time))
+print(string.format("elapsed time until train completed: %.2f", os.clock() - time))
 
 -- Normalize testset.data
 testset.data = testset.data:double()
@@ -124,8 +124,7 @@ for i=1,10000 do
         correct = correct + 1
     end
 end
-
-print(correct, 100*correct/10000 .. ' % ')
+print('correct: ', .. , correct, .. , '(' , .. 100*correct/10000 .. '%)')
 
 -- Check time
-print(string.format("total elapsed time: %.2f\n", os.clock() - time))
+print(string.format("total elapsed time: %.2f", os.clock() - time))
