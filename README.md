@@ -11,13 +11,17 @@
 1. correct: 4841(48.41%) / total elapsed time: 520.00
 1. correct: 4635(46.35%) / total elapsed time: 680.00
 
+#### learningRate 0.001 / epoch 1
+
+1. correct: 
+
 #### learningRate 0.001 / epoch 20
 
 1. correct: 4834(48.34%) / total elapsed time: 10695.00
 
 #### learningRate 0.005 / epoch 5
 
-1. 
+1. correct: 4480(44.80%) / total elapsed time: 2881.00
 
 ### train-GPU
 
