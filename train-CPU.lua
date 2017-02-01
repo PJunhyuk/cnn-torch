@@ -97,8 +97,8 @@ criterion = nn.ClassNLLCriterion()
 
 -- Train
 trainer = nn.StochasticGradient(net, criterion)
-trainer.learningRate = 0.001
-trainer.maxIteration = 20 -- set epoch
+trainer.learningRate = 0.005
+trainer.maxIteration = 5 -- set epoch
 
 trainer:train(trainset)
 print('Train completed')
