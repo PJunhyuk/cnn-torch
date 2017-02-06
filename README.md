@@ -13,7 +13,7 @@
 
 #### learningRate 0.001 / epoch 1
 
-1. correct: 
+1. correct: 3748(37.48%) / total elapsed time: 785.00
 
 #### learningRate 0.001 / epoch 20
 
@@ -24,5 +24,3 @@
 1. correct: 4480(44.80%) / total elapsed time: 2881.00
 
 ### train-GPU
-
-1. correct: / total elapsed time: 
