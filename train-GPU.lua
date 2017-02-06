@@ -4,8 +4,8 @@
 local time = os.time()
 
 -- Setting required packages
-require 'nn';
-require 'cunn';
+require 'nn'
+require 'cunn'
 
 -- Download data from files, and initialize it
 trainset = torch.load('cifar10-train.t7')
