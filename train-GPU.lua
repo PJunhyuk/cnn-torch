@@ -104,7 +104,7 @@ trainset.data = trainset.data:cuda()
 -- Train
 trainer = nn.StochasticGradient(net, criterion)
 trainer.learningRate = 0.001
-trainer.maxIteration = 5 -- set epoch
+trainer.maxIteration = 1 -- set epoch
 
 trainer:train(trainset)
 print('Train completed')
@@ -113,7 +113,7 @@ print('Train completed')
 print(string.format("elapsed time until train completed: %.2f", os.time() - time))
 
 -- Normalize testset.data
-testset.data = testset.data:double()
+testset.data = testset.data:cuda()
 for i=1,3 do
     testset.data[{ {}, {i}, {}, {}  }]:add(-mean[i])  
     testset.data[{ {}, {i}, {}, {}  }]:div(stdv[i])
