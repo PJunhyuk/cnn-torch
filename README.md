@@ -34,4 +34,11 @@
 
 #### learningRate 0.001 / epoch 5
 
-1. 
+1. correct: 4736(47.36%) / total elapsed time: 52.00
+1. correct: 4675(46.75%) / total elapsed time: 55.00
+1. correct: 4319(43.19%) / total elapsed time: 57.00
+1. correct: 4690(46.90%) / total elapsed time: 56.00
+
+#### learningRate 0.001 / epoch 20
+
+1. correct: (%) / total elapsed time: 
