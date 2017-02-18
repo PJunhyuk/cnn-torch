@@ -1,5 +1,12 @@
 # cnn-torch
 
+Basic CNN(Convolutional Neural Networks) which is implemented by torch
+
+## Explanation
+
+Classify images by 10 classes.
+Use CIFAR-10 classification datasets.
+
 ## Results
 
 ### train-CPU
@@ -41,4 +48,8 @@
 
 #### learningRate 0.001 / epoch 20
 
-1. correct: (%) / total elapsed time: 
+1. correct: 4944(49.44%) / total elapsed time: 164.00
+
+## Reference
+
+- [Deep Learning with Torch: the 60-minute blitz](http://nbviewer.jupyter.org/github/soumith/talks/blob/master/gtc2015/Deep%20Learning%20with%20Torch.ipynb) by Soumith
